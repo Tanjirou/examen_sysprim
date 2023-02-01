@@ -15,17 +15,12 @@ use Illuminate\Support\Facades\Schema;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 if (Schema::hasTable('users') && count(DB::table('users')->get())>0)
 {
     Route::get('/register', function() {
         return redirect('/login');
     });
 }
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
     return view('dashboard');
 })->name('dashboard');

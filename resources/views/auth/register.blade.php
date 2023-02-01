@@ -12,34 +12,36 @@
                 <div class="mb-3">
                     <x-jet-label value="{{ __('Cedula') }}" />
 
-                    <x-jet-input class="{{ $errors->has('cedula') ? 'is-invalid' : '' }}" type="text" name="cedula"
-                                 :value="old('cedula')" required autofocus autocomplete="cedula" />
-                    <x-jet-input-error for="cedula"></x-jet-input-error>
+                    <x-jet-input class="{{ $errors->has('dni') ? 'is-invalid' : '' }}" type="text" name="dni"
+                        :value="old('dni')" required autofocus autocomplete="dni" />
+                    <x-jet-input-error for="dni"></x-jet-input-error>
                 </div>
                 <div class="mb-3">
                     <x-jet-label value="{{ __('Nombre') }}" />
 
                     <x-jet-input class="{{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name"
-                                 :value="old('name')" required autofocus autocomplete="name" />
+                        :value="old('name')" required autofocus autocomplete="name" />
                     <x-jet-input-error for="name"></x-jet-input-error>
                 </div>
 
                 <div class="mb-3">
                     <x-jet-label value="{{ __('fecha de nacimiento') }}" />
 
-                    <x-jet-input class="{{ $errors->has('fecha_nac') ? 'is-invalid' : '' }}" type="date" name="fecha_nac"
-                                 :value="old('fecha_nac')" required autofocus autocomplete="fecha_nac" />
-                    <x-jet-input-error for="fecha_nac"></x-jet-input-error>
+                    <x-jet-input class="{{ $errors->has('date_birth') ? 'is-invalid' : '' }}" type="date"
+                        name="date_birth" :value="old('date_birth')" required autofocus autocomplete="date_birth" />
+                    <x-jet-input-error for="date_birth"></x-jet-input-error>
                 </div>
 
                 <div class="mb-3">
-
-                    <input class="{{ $errors->has('gender') ? 'is-invalid' : '' }}" type="radio" name="gender"
-                                 value="H" required autofocus autocomplete="gender" id="male"/>
-                    <x-jet-label value="{{ __('Hombre') }}" for="male" />
-                    <input class="{{ $errors->has('gender') ? 'is-invalid' : '' }}" type="radio" name="gender"
-                    value="M" required autofocus autocomplete="gender" id="female" />
-                    <x-jet-label value="{{ __('Mujer') }}" for="female" />
+                    <x-jet-label value="{{ __('Sexo') }}" />
+                    <div>
+                        <input class="{{ $errors->has('gender') ? 'is-invalid' : '' }} form-check-input" type="radio" name="gender"
+                            value="H" required autofocus autocomplete="gender" id="male" />
+                        <x-jet-label value="{{ __('Hombre') }}" for="male" />
+                        <input class="{{ $errors->has('gender') ? 'is-invalid' : '' }} form-check-input" type="radio" name="gender"
+                            value="M" required autofocus autocomplete="gender" id="female" />
+                        <x-jet-label value="{{ __('Mujer') }}" for="female" />
+                    </div>
                     <x-jet-input-error for="gender"></x-jet-input-error>
                 </div>
 
@@ -47,7 +49,7 @@
                     <x-jet-label value="{{ __('Correo') }}" />
 
                     <x-jet-input class="{{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email"
-                                 :value="old('email')" required />
+                        :value="old('email')" required />
                     <x-jet-input-error for="email"></x-jet-input-error>
                 </div>
 
@@ -55,14 +57,15 @@
                     <x-jet-label value="{{ __('Contraseña') }}" />
 
                     <x-jet-input class="{{ $errors->has('password') ? 'is-invalid' : '' }}" type="password"
-                                 name="password" required autocomplete="new-password" />
+                        name="password" required autocomplete="new-password" />
                     <x-jet-input-error for="password"></x-jet-input-error>
                 </div>
 
                 <div class="mb-3">
                     <x-jet-label value="{{ __('Confirmar contraseña') }}" />
 
-                    <x-jet-input class="form-control" type="password" name="password_confirmation" required autocomplete="new-password" />
+                    <x-jet-input class="form-control" type="password" name="password_confirmation" required
+                        autocomplete="new-password" />
                 </div>
 
                 @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
@@ -71,9 +74,9 @@
                             <input type="checkbox" id="terms" name="terms">
                             <label class="custom-control-label" for="terms">
                                 {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                            'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'">'.__('Terms of Service').'</a>',
-                                            'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'">'.__('Privacy Policy').'</a>',
-                                    ]) !!}
+                                    'terms_of_service' => '<a target="_blank" href="' . route('terms.show') . '">' . __('Terms of Service') . '</a>',
+                                    'privacy_policy' => '<a target="_blank" href="' . route('policy.show') . '">' . __('Privacy Policy') . '</a>',
+                                ]) !!}
                             </label>
                         </div>
                     </div>

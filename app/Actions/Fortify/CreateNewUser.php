@@ -2,6 +2,7 @@
 
 namespace App\Actions\Fortify;
 
+use App\Models\Employee;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -22,12 +23,26 @@ class CreateNewUser implements CreatesNewUsers
         Validator::make($input, [
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
+            'dni' => ['required','string','min:6', 'max:8', 'unique:employees'],
+            'name' => ['required','string' ,'min:6', 'max:255'],
+            'date_birth' => ['required','date'],
+            'gender' => ['required']
         ])->validate();
 
-        return User::create([
-            'user_types'=> 1,
+        $user = User::create([
+            'user_type'=> 1,
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);
+         Employee::create([
+            'user_id' => $user->id,
+            'department_id' =>1,
+            'dni' => $input['dni'],
+            'names' => $input['name'],
+            'date_birth'=> $input['date_birth'],
+            'gender' => $input['gender'],
+            'status' => 'A'
+        ]);
+        return $user;
     }
 }
