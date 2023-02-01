@@ -3,6 +3,7 @@
 namespace App\Actions\Fortify;
 
 use App\Models\Employee;
+use App\Models\EmployeeDepartment;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -34,14 +35,18 @@ class CreateNewUser implements CreatesNewUsers
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);
-         Employee::create([
+        $employee = Employee::create([
             'user_id' => $user->id,
-            'department_id' =>1,
             'dni' => $input['dni'],
             'names' => $input['name'],
             'date_birth'=> $input['date_birth'],
             'gender' => $input['gender'],
             'status' => 'A'
+        ]);
+
+        EmployeeDepartment::create([
+            'department_id' =>1,
+            'employee_id' => $employee->id
         ]);
         return $user;
     }

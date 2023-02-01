@@ -16,14 +16,12 @@ class CreateEmployeesTable extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('department_id');
             $table->string('dni')->unique();
             $table->string('names');
             $table->char('gender');
             $table->date('date_birth');
-            $table->char('status');
+            $table->char('status')->default('A');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('department_id')->references('id')->on('departments');
             $table->timestamps();
         });
     }

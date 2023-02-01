@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Department;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
@@ -24,3 +25,6 @@ if (Schema::hasTable('users') && count(DB::table('users')->get())>0)
 Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::middleware(['auth'])->get('/department', Department::class)->name('department.index');
+

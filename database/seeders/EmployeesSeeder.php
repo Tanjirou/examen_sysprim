@@ -16,7 +16,6 @@ class EmployeesSeeder extends Seeder
     {
         DB::table('employees')->insert([
             'user_id' =>1,
-            'department_id' =>1,
             'dni' => '21727234',
             'names' => 'Maria Perez',
             'gender' => 'F',
@@ -26,9 +25,13 @@ class EmployeesSeeder extends Seeder
             'updated_at'=> date("Y-m-d H:i:s")
         ]);
 
+        DB::table('employee_departments')->insert([
+            'employee_id'=> 1,
+            'department_id' => 1
+        ]);
+
         DB::table('employees')->insert([
             'user_id' =>2,
-            'department_id' =>2,
             'dni' => '14679675',
             'names' => 'Pedro Lugo',
             'gender' => 'M',
@@ -38,9 +41,13 @@ class EmployeesSeeder extends Seeder
             'updated_at'=> date("Y-m-d H:i:s")
         ]);
 
+        DB::table('employee_departments')->insert([
+            'employee_id'=> 2,
+            'department_id' => 2
+        ]);
+
         DB::table('employees')->insert([
             'user_id' =>3,
-            'department_id' =>3,
             'dni' => '4739947',
             'names' => 'Eduardo Torrealba',
             'gender' => 'M',
@@ -50,9 +57,13 @@ class EmployeesSeeder extends Seeder
             'updated_at'=> date("Y-m-d H:i:s")
         ]);
 
+        DB::table('employee_departments')->insert([
+            'employee_id'=> 3,
+            'department_id' => 3
+        ]);
+
         DB::table('employees')->insert([
             'user_id' =>4,
-            'department_id' =>2,
             'dni' => '3789965',
             'names' => 'Reyna Riera',
             'gender' => 'F',
@@ -60,6 +71,10 @@ class EmployeesSeeder extends Seeder
             'status' => 'R',
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at'=> date("Y-m-d H:i:s")
+        ]);
+        DB::table('employee_departments')->insert([
+            'employee_id'=> 4,
+            'department_id' => 2
         ]);
     }
 }
