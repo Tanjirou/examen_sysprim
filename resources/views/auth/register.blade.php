@@ -9,9 +9,15 @@
         <div class="card-body">
             <form method="POST" action="{{ route('register') }}">
                 @csrf
-
                 <div class="mb-3">
-                    <x-jet-label value="{{ __('Name') }}" />
+                    <x-jet-label value="{{ __('Cedula') }}" />
+
+                    <x-jet-input class="{{ $errors->has('cedula') ? 'is-invalid' : '' }}" type="text" name="cedula"
+                                 :value="old('cedula')" required autofocus autocomplete="cedula" />
+                    <x-jet-input-error for="cedula"></x-jet-input-error>
+                </div>
+                <div class="mb-3">
+                    <x-jet-label value="{{ __('Nombre') }}" />
 
                     <x-jet-input class="{{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name"
                                  :value="old('name')" required autofocus autocomplete="name" />
@@ -19,7 +25,26 @@
                 </div>
 
                 <div class="mb-3">
-                    <x-jet-label value="{{ __('Email') }}" />
+                    <x-jet-label value="{{ __('fecha de nacimiento') }}" />
+
+                    <x-jet-input class="{{ $errors->has('fecha_nac') ? 'is-invalid' : '' }}" type="date" name="fecha_nac"
+                                 :value="old('fecha_nac')" required autofocus autocomplete="fecha_nac" />
+                    <x-jet-input-error for="fecha_nac"></x-jet-input-error>
+                </div>
+
+                <div class="mb-3">
+
+                    <input class="{{ $errors->has('gender') ? 'is-invalid' : '' }}" type="radio" name="gender"
+                                 value="H" required autofocus autocomplete="gender" id="male"/>
+                    <x-jet-label value="{{ __('Hombre') }}" for="male" />
+                    <input class="{{ $errors->has('gender') ? 'is-invalid' : '' }}" type="radio" name="gender"
+                    value="M" required autofocus autocomplete="gender" id="female" />
+                    <x-jet-label value="{{ __('Mujer') }}" for="female" />
+                    <x-jet-input-error for="gender"></x-jet-input-error>
+                </div>
+
+                <div class="mb-3">
+                    <x-jet-label value="{{ __('Correo') }}" />
 
                     <x-jet-input class="{{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email"
                                  :value="old('email')" required />
@@ -27,7 +52,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <x-jet-label value="{{ __('Password') }}" />
+                    <x-jet-label value="{{ __('Contraseña') }}" />
 
                     <x-jet-input class="{{ $errors->has('password') ? 'is-invalid' : '' }}" type="password"
                                  name="password" required autocomplete="new-password" />
@@ -35,7 +60,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <x-jet-label value="{{ __('Confirm Password') }}" />
+                    <x-jet-label value="{{ __('Confirmar contraseña') }}" />
 
                     <x-jet-input class="form-control" type="password" name="password_confirmation" required autocomplete="new-password" />
                 </div>
@@ -57,7 +82,7 @@
                 <div class="mb-0">
                     <div class="d-flex justify-content-end align-items-baseline">
                         <a class="text-muted me-3 text-decoration-none" href="{{ route('login') }}">
-                            {{ __('Already registered?') }}
+                            {{ __('¿Estás Registrado?') }}
                         </a>
 
                         <x-jet-button>
