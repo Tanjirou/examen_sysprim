@@ -12,7 +12,7 @@
                         <a href="{{route('department.index')}}" class="btn btn-primary text-white w-lg-25">Departamentos</a>
 
 
-                        <a class="btn btn-secondary text-white w-lg-25">Empleados</a>
+                        <a href="{{route('employee.index')}}" class="btn btn-secondary text-white w-lg-25">Empleados</a>
 
                    </div>
                     @else
